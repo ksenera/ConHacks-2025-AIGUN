@@ -4,6 +4,7 @@ module.exports = {
    mode: "production",
    entry: {
       background: path.resolve(__dirname, "..", "src", "background.ts"),
+      contentScript: path.resolve(__dirname, "..", "src", "contentScript.ts" )
    },
    output: {
       path: path.join(__dirname, "../dist"),
@@ -23,7 +24,7 @@ module.exports = {
    },
    plugins: [
       new CopyPlugin({
-         patterns: [{from: ".", to: ".", context: "public"}]
+         patterns: [{from: 'public/manifest.json', to: path.resolve(__dirname, 'dist')}]
       }),
    ],
 };

@@ -1,0 +1,28 @@
+{
+  "name": "conhacks_2025_aigun",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksenera/ConHacks-2025-AIGUN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksenera/ConHacks-2025-AIGUN/issues"
+  },
+  "homepage": "https://github.com/ksenera/ConHacks-2025-AIGUN#readme",
+  "devDependencies": {
+    "@types/chrome": "^0.0.307",
+    "copy-webpack-plugin": "^13.0.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.2",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  }
+}

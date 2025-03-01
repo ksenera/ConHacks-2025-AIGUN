@@ -1,0 +1,310 @@
+
+/* Add font files for Alata */
+@font-face {
+  font-family: 'Alata';
+  src: url('fonts/alata.woff2') format('woff2'),
+       url('fonts/alata.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --font-family-alata: 'Alata', sans-serif;
+  --font-family-inter: 'Inter', sans-serif;
+}
+
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.text-2 {
+  position: absolute;
+  left: 106px;
+  top: 86px;
+  width: 263px;
+  height: 44px;
+  font-size: 40px;
+  font-family: var(--font-family-alata);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.text-3 {
+  position: absolute;
+  left: 138px;
+  top: 130px;
+  width: 200px;
+  height: 44px;
+  font-size: 40px;
+  font-family: var(--font-family-alata);
+  font-weight: normal;
+  text-align: center;
+  color: rgba(0, 0, 0, 1);
+}
+
+.line-3-4 {
+  position: absolute;
+  left: 23px;
+  top: 185px;
+  width: 429.0046691894531px;
+  height: 0px;
+  border: 7px solid rgba(0, 0, 0, 0.17000000178813934);
+}
+
+.text-7 {
+  position: absolute;
+  left: 19px;
+  top: 11px;
+  width: 122px;
+  height: 32px;
+  font-size: 40px;
+  font-family: var(--font-family-alata);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.text-8 {
+  position: absolute;
+  left: 19px;
+  top: 386px;
+  width: 334px;
+  height: 32px;
+  font-size: 20px;
+  font-family: var(--font-family-alata);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.frame-23-6 {
+  position: absolute;
+  left: 53px;
+  top: 516px;
+  width: 370px;
+  height: 427px;
+  border: 2px solid rgba(197, 197, 197, 1);
+  border-radius: 25px;
+}
+
+.text-10 {
+  position: absolute;
+  left: 19px;
+  top: 11px;
+  width: 122px;
+  height: 32px;
+  font-size: 40px;
+  font-family: var(--font-family-alata);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.text-11 {
+  position: absolute;
+  left: 19px;
+  top: 386px;
+  width: 334px;
+  height: 32px;
+  font-size: 20px;
+  font-family: var(--font-family-alata);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.frame-26-9 {
+  position: absolute;
+  left: 53px;
+  top: 47px;
+  width: 370px;
+  height: 427px;
+  border: 2px solid rgba(197, 197, 197, 1);
+  border-radius: 25px;
+}
+
+.text-13 {
+  position: absolute;
+  left: 24px;
+  top: 22px;
+  width: 322px;
+  height: 267px;
+  font-size: 16px;
+  font-family: var(--font-family-inter);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.frame-27-12 {
+  position: absolute;
+  left: 53px;
+  top: 104px;
+  width: 370px;
+  height: 312px;
+  border: 2px solid rgba(197, 197, 197, 1);
+}
+
+.text-15 {
+  position: absolute;
+  left: 19px;
+  top: 11px;
+  width: 122px;
+  height: 32px;
+  font-size: 40px;
+  font-family: var(--font-family-alata);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.text-16 {
+  position: absolute;
+  left: 19px;
+  top: 386px;
+  width: 334px;
+  height: 32px;
+  font-size: 20px;
+  font-family: var(--font-family-alata);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.frame-24-14 {
+  position: absolute;
+  left: 53px;
+  top: 985px;
+  width: 370px;
+  height: 427px;
+  border: 2px solid rgba(197, 197, 197, 1);
+  border-radius: 25px;
+}
+
+.text-18 {
+  position: absolute;
+  left: 24px;
+  top: 22px;
+  width: 322px;
+  height: 267px;
+  font-size: 16px;
+  font-family: var(--font-family-inter);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.frame-25-17 {
+  position: absolute;
+  left: 53px;
+  top: 1042px;
+  width: 370px;
+  height: 312px;
+  border: 2px solid rgba(197, 197, 197, 1);
+}
+
+.text-20 {
+  position: absolute;
+  left: 24px;
+  top: 22px;
+  width: 322px;
+  height: 267px;
+  font-size: 16px;
+  font-family: var(--font-family-inter);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.frame-22-19 {
+  position: absolute;
+  left: 53px;
+  top: 573px;
+  width: 370px;
+  height: 312px;
+  border: 2px solid rgba(197, 197, 197, 1);
+}
+
+.text-22 {
+  position: absolute;
+  left: 19px;
+  top: 11px;
+  width: 122px;
+  height: 32px;
+  font-size: 40px;
+  font-family: var(--font-family-alata);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.text-23 {
+  position: absolute;
+  left: 19px;
+  top: 386px;
+  width: 334px;
+  height: 32px;
+  font-size: 20px;
+  font-family: var(--font-family-alata);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.frame-23-21 {
+  position: absolute;
+  left: 53px;
+  top: 1454px;
+  width: 370px;
+  height: 427px;
+  border: 2px solid rgba(197, 197, 197, 1);
+  border-radius: 25px;
+}
+
+.text-25 {
+  position: absolute;
+  left: 24px;
+  top: 22px;
+  width: 322px;
+  height: 267px;
+  font-size: 16px;
+  font-family: var(--font-family-inter);
+  font-weight: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.frame-22-24 {
+  position: absolute;
+  left: 53px;
+  top: 1511px;
+  width: 370px;
+  height: 312px;
+  border: 2px solid rgba(197, 197, 197, 1);
+}
+
+.frame-20-5 {
+  position: absolute;
+  left: 0px;
+  top: 189px;
+  width: 476px;
+  height: 1928px;
+}
+
+.frame-20-1 {
+  position: absolute;
+  left: 483px;
+  top: 827px;
+  width: 476px;
+  height: 2098px;
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
+  border-radius: 20px;
+}

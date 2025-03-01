@@ -16,5 +16,7 @@ export function toggleSiderBar() {
         sideBar.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
         sideBar.style.zIndex = '9999999999';
         document.body.appendChild(sideBar);
+
+        
     }
 }

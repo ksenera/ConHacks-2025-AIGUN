@@ -1,0 +1,13 @@
+{
+    "name": "Environmental & ESG Score Extension",
+    "description": "This extension is made to pull ESG scores and relevant sustainbility news for consumers.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": [
+       "activeTab",
+       "scripting"
+    ],
+    "background": {
+       "service_worker": "background.js"
+    }
+ }

@@ -16,7 +16,7 @@ export function toggleSiderBar() {
     sideBar.style.width = '300px';
     sideBar.style.height = '100%';
     sideBar.style.borderLeft = '1px solid black';
-    sideBar.style.backgroundColor = 'rgba(145, 232, 110, 0.5)';
+    sideBar.style.backgroundColor = 'rgb(255, 255, 255)';
     sideBar.style.boxShadow = '-2px 0 5px rgba(0, 0, 0, 0.5)';
     sideBar.style.zIndex = '9999999999';
     sideBar.style.overflowY = 'auto';
@@ -51,6 +51,57 @@ export function toggleSiderBar() {
     esgContent.style.padding = '10px';
     esgContent.textContent = 'ESG Scores content';
 
+    const bubbleContainer = document.createElement('div');
+    bubbleContainer.style.display = 'flex';
+    bubbleContainer.style.flexDirection = 'column';
+    bubbleContainer.style.gap = '1.5rem';   
+    bubbleContainer.style.marginTop = '1rem';
+
+    const environmentalRow = document.createElement('div');
+    environmentalRow.style.cssText = `display: flex; align-items: center;`;
+    environmentalRow.innerHTML = `
+      <div style="width: 120px;">Environmental</div>
+      <svg width="50" height="50">
+        <circle cx="25" cy="25" r="25" fill="lightgreen" />
+      </svg>
+    `;
+    bubbleContainer.appendChild(environmentalRow);
+
+    const socialRow = document.createElement('div');
+    socialRow.style.cssText = `display: flex; align-items: center;`;
+    socialRow.innerHTML = `
+      <div style="width: 120px;">Social</div>
+      <svg width="70" height="70">
+        <circle cx="35" cy="35" r="35" fill="lightblue" />
+      </svg>
+    `;
+    bubbleContainer.appendChild(socialRow);
+
+    const governanceRow = document.createElement('div');
+    governanceRow.style.cssText = `display: flex; align-items: center;`;
+    governanceRow.innerHTML = `
+      <div style="width: 120px;">Governance</div>
+      <svg width="40" height="40">
+        <circle cx="20" cy="20" r="20" fill="pink" />
+      </svg>
+    `;
+    bubbleContainer.appendChild(governanceRow);
+
+    const esgSummaryCard = document.createElement('div');
+    esgSummaryCard.style.cssText = `
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 1rem;
+    `;
+    esgSummaryCard.innerHTML = `
+      <h3 style="margin-top: 0;">Score Summary</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+    `;
+
+    sideBar.appendChild(tabHeader);
+
     const newsContent = document.createElement('div');
     newsContent.id = 'news-content';
     newsContent.style.padding = '10px';
@@ -58,9 +109,25 @@ export function toggleSiderBar() {
     // news tab hidden by default    
     newsContent.style.display = 'none';
 
-    sideBar.appendChild(tabHeader);
+    const newsCard = document.createElement('div');
+    newsCard.style.cssText = `
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 1rem;
+    `;
+    newsCard.innerHTML = `
+      <h3 style="margin-top: 0;">Title</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+      <p><strong>Read More:</strong> <a href="#">link</a></p>
+    `;
+    newsContent.appendChild(newsCard);
+
     sideBar.appendChild(esgContent);
     sideBar.appendChild(newsContent);
+    sideBar.appendChild(bubbleContainer);   
+    sideBar.appendChild(esgSummaryCard);
 
     document.body.appendChild(sideBar);
 

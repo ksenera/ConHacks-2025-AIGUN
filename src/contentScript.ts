@@ -80,7 +80,7 @@ export function toggleSiderBar() {
     const governanceRow = document.createElement('div');
     governanceRow.style.cssText = `display: flex; align-items: center;`;
     governanceRow.innerHTML = `
-      <div style="width: 120px;">Governance</div>
+      <div style="width: 150px;">Governance</div>
       <svg width="40" height="40">
         <circle cx="20" cy="20" r="20" fill="pink" />
       </svg>
@@ -92,7 +92,7 @@ export function toggleSiderBar() {
       background: #fff;
       border: 1px solid #ddd;
       border-radius: 5px;
-      padding: 10px;
+      padding: 20px;
       margin-bottom: 1rem;
     `;
     esgSummaryCard.innerHTML = `
@@ -126,8 +126,8 @@ export function toggleSiderBar() {
 
     sideBar.appendChild(esgContent);
     sideBar.appendChild(newsContent);
-    sideBar.appendChild(bubbleContainer);   
-    sideBar.appendChild(esgSummaryCard);
+    esgContent.appendChild(bubbleContainer);
+    esgContent.appendChild(esgSummaryCard);
 
     document.body.appendChild(sideBar);
 

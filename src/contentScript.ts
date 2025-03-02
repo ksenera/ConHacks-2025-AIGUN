@@ -262,12 +262,52 @@ export function toggleSiderBar() {
         newsContent.style.display = 'none'
     })
 
-    newsTab.addEventListener('click', () => {
+    newsTab.addEventListener('click', async () => {
         newsTab.style.backgroundColor = 'rgba(144, 219, 233, 0.1)'
         esgTab.style.backgroundColor = 'transparent'
         newsContent.style.display = 'block'
         esgContent.style.display = 'none'
-    })
+        
+        const company = input.value.trim();
+        if (!company) {
+          newsContent.innerHTML = '<p>Please enter a company name in the ESG tab first!</p>';
+          return;
+        }
+      
+        newsContent.innerHTML = `<p>Loading news for "${company}"...</p>`;
+        try {
+          const response = await fetch(`http://127.0.0.1:5000/api/news/${encodeURIComponent(company)}`);
+          if (!response.ok) {
+            throw new Error(`Server responded with status ${response.status}`);
+          }
+          const articles = await response.json();
+          newsContent.innerHTML = ''; 
+      
+          articles.forEach((article: any) => {
+            const articleDiv = document.createElement('div');
+            articleDiv.style.cssText = `
+              background: #fff;
+              border: 1px solid #ddd;
+              border-radius: 5px;
+              padding: 10px;
+              margin-bottom: 1rem;
+            `;
+            articleDiv.innerHTML = `
+              <h3 style="margin-top: 0;">${article.title}</h3>
+              <p>${article.description || ''}</p>
+              <p><strong>Read More:</strong> <a href="${article.url}" target="_blank">link</a></p>
+            `;
+            newsContent.appendChild(articleDiv);
+          });
+      
+          if (articles.length === 0) {
+            newsContent.innerHTML = `<p>No news found for "${company}".</p>`;
+          }
+        } catch (err) {
+          newsContent.innerHTML = `<p>Error fetching news: ${err}</p>`;
+          console.error(err);
+        }
+      });
 }
 
 

@@ -4,6 +4,9 @@ import json
 from dotenv import load_dotenv
 import os
 from openai import OpenAI
+from flask import Blueprint
+
+esg_summary_page = Blueprint(name='esg_summary_page', import_name=__name__)
 
 load_dotenv()
 OPEN_AI_KEY = os.getenv("OPEN_AI_KEY")
@@ -29,8 +32,12 @@ def get_esg_raw(company_name: str):
 
 def get_esg_series(esg_raw: bytes):
     data = json.loads((esg_raw))
-    symbol_series = data['esgChart']['result'][0]['symbolSeries']
-    peer_series = data['esgChart']['result'][0]['peerSeries']
+    
+    try:
+        symbol_series = data['esgChart']['result'][0]['symbolSeries']
+        peer_series = data['esgChart']['result'][0]['peerSeries']
+    except:
+        return None
     
     symbol_series.pop('timestamp')
     peer_series.pop('timestamp')
@@ -38,13 +45,15 @@ def get_esg_series(esg_raw: bytes):
     return (symbol_series, peer_series)
 
 
-def get_summary(company_name: str, esg_raw_data: bytes = None):
-    esg_data = get_esg_raw(company_name) if esg_raw_data is None else esg_raw_data
-    
+@esg_summary_page.route('/api/summary')
+def get_summary(company_name: str):
+    esg_data = get_esg_raw(company_name)
     if esg_data is None:
         return f"An ESG score couldn't be found for {company_name}"
     
     series_data = get_esg_series(esg_data)
+    if series_data is None:
+        return f"ESG score for {company_name} was not complete"
     
     client = OpenAI(api_key=OPEN_AI_KEY)
     completion = client.chat.completions.create(

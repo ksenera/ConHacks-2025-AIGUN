@@ -1,10 +1,10 @@
-from newsapi import NewsApiClient
+#from newsapi import NewsApiClient
 from bs4 import BeautifulSoup
 import requests
 from flask import Blueprint
 import os
 from dotenv import load_dotenv
-import newsapi
+#import newsapi
 import re
     
 load_dotenv()

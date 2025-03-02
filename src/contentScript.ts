@@ -65,6 +65,8 @@ export function toggleSiderBar() {
     fetchButton.addEventListener("click", async () => {
       const company = input.value.trim();
       if (!company) return;
+
+
       const summaryEl = document.getElementById("esg-summary");
       if (!summaryEl) return;
       summaryEl.textContent = `Loading ESG summary for "${company}"...`;
@@ -74,8 +76,51 @@ export function toggleSiderBar() {
         if (!response.ok) {
           throw new Error(`Server responded with ${response.status}`);
         }
-        const text = await response.text();
-        summaryEl.textContent = text;
+        const data = await response.json();
+
+        const environmentalRowEl = document.getElementById('environmental-row');
+        if (environmentalRowEl && data.environmental) {
+          let envDesc = document.getElementById('env-desc');
+          if (!envDesc) {
+            envDesc = document.createElement('div');
+            envDesc.id = 'env-desc';
+            environmentalRowEl.appendChild(envDesc);
+          }
+          envDesc.textContent = `${data.environmental.score}: ${data.environmental.description}`;
+        }
+
+        const socialRowEl = document.getElementById('social-row');
+        if (socialRowEl && data.social) {
+          let socDesc = document.getElementById('soc-desc');
+          if (!socDesc) {
+            socDesc = document.createElement('div');
+            socDesc.id = 'soc-desc';
+            socialRowEl.appendChild(socDesc);
+          }
+          socDesc.textContent = `${data.social.score}: ${data.social.description}`;
+        }
+
+        const governanceRowEl = document.getElementById('governance-row');
+        if (governanceRowEl && data.governance) {
+          let govDesc = document.getElementById('gov-desc');
+          if (!govDesc) {
+            govDesc = document.createElement('div');
+            govDesc.id = 'gov-desc';
+            governanceRowEl.appendChild(govDesc);
+          }
+          govDesc.textContent = `${data.governance.score}: ${data.governance.description}`;
+        }
+
+        const esgSummaryCardEl = document.getElementById('esg-summary-card');
+        if (esgSummaryCardEl && data.overall) {
+          esgSummaryCardEl.innerHTML = `
+            <h3 style="margin-top: 0;">Score Summary</h3>
+            <p><strong>${data.overall.score}</strong> - ${data.overall.description}</p>
+          `;
+        }
+
+        summaryEl.textContent = '';
+
       } catch (err) {
         summaryEl.textContent = `Error fetching ESG summary: ${err}`;
         console.error(err);
@@ -93,6 +138,7 @@ export function toggleSiderBar() {
     bubbleContainer.style.marginTop = '1rem';
 
     const environmentalRow = document.createElement('div');
+    environmentalRow.id = 'environmental-row';
     environmentalRow.style.cssText = `display: flex; align-items: center;`;
     environmentalRow.innerHTML = `
       <div style="width: 120px;">Environmental</div>
@@ -103,6 +149,7 @@ export function toggleSiderBar() {
     bubbleContainer.appendChild(environmentalRow);
 
     const socialRow = document.createElement('div');
+    socialRow.id = 'social-row';
     socialRow.style.cssText = `display: flex; align-items: center;`;
     socialRow.innerHTML = `
       <div style="width: 120px;">Social</div>
@@ -113,6 +160,7 @@ export function toggleSiderBar() {
     bubbleContainer.appendChild(socialRow);
 
     const governanceRow = document.createElement('div');
+    governanceRow.id = 'governance-row';
     governanceRow.style.cssText = `display: flex; align-items: center;`;
     governanceRow.innerHTML = `
       <div style="width: 150px;">Governance</div>
@@ -123,6 +171,7 @@ export function toggleSiderBar() {
     bubbleContainer.appendChild(governanceRow);
 
     const esgSummaryCard = document.createElement('div');
+    esgSummaryCard.id = 'esg-summary-card';
     esgSummaryCard.style.cssText = `
       background: #fff;
       border: 1px solid #ddd;

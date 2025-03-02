@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import os
 from openai import OpenAI
 from flask import Blueprint
+from flask import jsonify
 
 esg_summary_page = Blueprint(name='esg_summary_page', import_name=__name__)
 
@@ -60,10 +61,33 @@ def get_summary(company_name: str):
         model="gpt-4o-mini",
         store=True,
         messages=[
-            {"role": "user", "content": f"write a short summary of the esg data for {company_name} in point form informing the consumer if this product has a good or bad esg score and why. DO NOT INCLUDE symbol or peer series data. Only provide the summary in plain text NOT IN MARKDOWN and provide a breif score beside each main point, for example \"Environmental Score: Good\". Historical esg data in json format {company_name} attached below\n Symbol Series: {series_data[0]} Peer Series {series_data[1]}"}
+            {
+                "role": "system",
+                "content": (
+                    "You are a helpful assistant that must output ONLY valid JSON. "
+                    "No extra text or markdown. Just JSON with the keys: "
+                    "environmental.score, environmental.description, social.score, social.description, "
+                    "governance.score, governance.description, overall.score, overall.description."
+                )
+            },
+            {
+                "role": "user",
+                "content": (
+                    f"Provide a short summary of the esg data for {company_name} in the JSON structure described. "
+                    f"Do NOT include symbol or peer series data. Historical esg data in JSON format below:\n"
+                    f"Symbol Series: {series_data[0]} Peer Series: {series_data[1]}\n"
+                    "Again, output ONLY valid JSON, no extra text, no markdown."
+                )
+            }
         ]
     )
     
-    return completion.choices[0].message.content
+    raw_json = completion.choices[0].message.content.strip()
+    try:
+        data = json.loads(raw_json)
+        return jsonify(data)
+    except json.JSONDecodeError:
+        return raw_json
+    
 
     

@@ -52,19 +52,21 @@ if __name__ == '__main__':
     get_esg_scores()"""
 
 import time
-from urllib.error import HTTPError
-import yesg
+from newsapi import NewsApiClient
 from bs4 import BeautifulSoup
 import requests
-
+from flask import Blueprint
+import os
+from dotenv import load_dotenv
+import newsapi
+    
+load_dotenv()
+NEWS_API_KEY = os.getenv('NEWS_API_KEY')
+scraper_page = Blueprint(name='scraper_page', import_name=__name__)
 
 def scrapeProductData(url):
     response = requests.get(url)
-
-
     soup = BeautifulSoup(response.content, 'html.parser')
-
-
     brand_info = soup.find('a', {'id': 'bylineInfo'})
     brand_name = brand_info.text.strip()
     if brand_name[0] == 'V':
@@ -75,10 +77,15 @@ def scrapeProductData(url):
     else:
         print(f"{brand_name}")
 
-    
 
+@scraper_page.route('/api/news/<company_name>')
+def get_news_data(company_name: str):
+    keywords = ['environmental', 'environment', 'sustainability', 'sustainable', 'governance', 'esg']
+    client = NewsApiClient(api_key=NEWS_API_KEY)
 
-if __name__ == "__main__":
-    scrapeProductData('https://www.amazon.ca/Blink-Outdoor-4th-Gen-1-Camera/dp/B0B1N7G2R1/ref=rvi_d_sccl_8/147-9657445-7161048?pd_rd_w=gdk1r&content-id=amzn1.sym.8b4d8c20-8e51-4634-a76f-c00a1995a502&pf_rd_p=8b4d8c20-8e51-4634-a76f-c00a1995a502&pf_rd_r=NQ895DA4GAHN0XX6CNRM&pd_rd_wg=oCbEj&pd_rd_r=e0687899-7ca3-498c-a8ca-f142564cb0cb&pd_rd_i=B0B1N7G2R1&th=1')
+    # Fetch headlines and sort by relevancy
+    response = client.get_everything(q=f'{company_name} AND {f" OR ".join(keywords)}', language="en", sort_by=newsapi.const.sort_method[2])
     
-    time.sleep(1)
+    return response
+
+    

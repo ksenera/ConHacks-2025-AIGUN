@@ -64,19 +64,13 @@ def get_summary(company_name: str):
             {
                 "role": "system",
                 "content": (
-                    "You are a helpful assistant that must output ONLY valid JSON. "
-                    "No extra text or markdown. Just JSON with the keys: "
-                    "environmental.score, environmental.description, social.score, social.description, "
-                    "governance.score, governance.description, overall.score, overall.description."
+                    "You are a helpful assistant that must output ONLY valid JSON. No extra text or markdown. Just JSON with the keys: environmental.score, environmental.description, social.score, social.description, governance.score, governance.description, overall.score, overall.description."
                 )
             },
             {
                 "role": "user",
                 "content": (
-                    f"Provide a short summary of the esg data for {company_name} in the JSON structure described. "
-                    f"Do NOT include symbol or peer series data. Historical esg data in JSON format below:\n"
-                    f"Symbol Series: {series_data[0]} Peer Series: {series_data[1]}\n"
-                    "Again, output ONLY valid JSON, no extra text, no markdown."
+                    f"Provide a short summary of the esg data for {company_name} in the JSON structure described. Do NOT include symbol or peer series data. Historical esg data in JSON format below:\n. Symbol Series: {series_data[0]} Peer Series: {series_data[1]}\n. Again, output ONLY valid JSON, no extra text, no markdown."
                 )
             }
         ]

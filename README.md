@@ -9,9 +9,9 @@ Going into this project we aimed to solve issues and contribute to goals in the 
 - Display recent news articles related to the 3 parts of ESGs, Environmental, Social, and Governence for the products manufacturer
 
 ## How to Use it
-- Install Chrome Estension
+- Install Chrome Extension
 - While on a site such as amazon open the extension in the top right of your browser
-- The extension will automatically load the ESG score for the manufacturer
+- The extension should automatically load the ESG score for the manufacturer, but search functionality was implemented for the hackathon deliverable. 
 - Click the second tab labeled "News" to get a quick summary of recent news articles along with links to many more
 
 ## Tools & References Used:

@@ -18,5 +18,6 @@ Going into this project we aimed to solve issues and contribute to goals in the 
 - Yahoo Finance API
 - BeautifulSoup Web Scraper
 - OpenAi API
+- ChatGPT + Copilot
 - Python
 - TypeScript

@@ -51,6 +51,41 @@ export function toggleSiderBar() {
     esgContent.style.padding = '10px';
     esgContent.textContent = 'ESG Scores content';
 
+    const searchRow = document.createElement("div");
+    searchRow.style.marginBottom = "10px";
+  
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Enter company name...";
+    input.style.cssText = `width: 70%; margin-right: 5px;`;
+  
+    const fetchButton = document.createElement("button");
+    fetchButton.textContent = "Fetch ESG";
+
+    fetchButton.addEventListener("click", async () => {
+      const company = input.value.trim();
+      if (!company) return;
+      const summaryEl = document.getElementById("esg-summary");
+      if (!summaryEl) return;
+      summaryEl.textContent = `Loading ESG summary for "${company}"...`;
+  
+      try {
+        const response = await fetch(`http://127.0.0.1:5000/api/summary/${encodeURIComponent(company)}`);
+        if (!response.ok) {
+          throw new Error(`Server responded with ${response.status}`);
+        }
+        const text = await response.text();
+        summaryEl.textContent = text;
+      } catch (err) {
+        summaryEl.textContent = `Error fetching ESG summary: ${err}`;
+        console.error(err);
+      }
+    });
+
+    searchRow.appendChild(input);
+    searchRow.appendChild(fetchButton);
+    esgContent.appendChild(searchRow);
+
     const bubbleContainer = document.createElement('div');
     bubbleContainer.style.display = 'flex';
     bubbleContainer.style.flexDirection = 'column';
@@ -102,6 +137,12 @@ export function toggleSiderBar() {
 
     sideBar.appendChild(tabHeader);
 
+    const summaryEl = document.createElement('div');
+    summaryEl.id = 'esg-summary';
+    summaryEl.textContent = 'Loading ESG summary...';
+    sideBar.appendChild(summaryEl);
+    
+
     const newsContent = document.createElement('div');
     newsContent.id = 'news-content';
     newsContent.style.padding = '10px';
@@ -145,5 +186,6 @@ export function toggleSiderBar() {
         newsContent.style.display = 'block';
         esgContent.style.display = 'none';
     });
-    
 }
+
+

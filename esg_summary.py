@@ -45,7 +45,7 @@ def get_esg_series(esg_raw: bytes):
     return (symbol_series, peer_series)
 
 
-@esg_summary_page.route('/api/summary')
+@esg_summary_page.route('/api/summary/<company_name>')
 def get_summary(company_name: str):
     esg_data = get_esg_raw(company_name)
     if esg_data is None:

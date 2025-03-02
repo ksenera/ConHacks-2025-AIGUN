@@ -1,7 +1,7 @@
 # ConHacks-2025-AIGUN
 
 ## About Project
-Going into this project we aimed to solve issues and contribute to goals in the united nations sustainable development plan. Realizing how popular online shopping is, it's never been so easy to order things you might not even need. Whether you realize it or not lots of companies have supply chains that are not sustainable in the long run. Our project aims to bring information to the consumer allowing them to make more informed decisions by explaining and showing the Environmental, Social, and Governence scores (ESGs) for manufacturers to them before making a purchase along with sharing news article summaries tailored towards these goals, allowing consumers to make a difference.
+Going into this project we aimed to solve issues and contribute to goals in the united nations sustainable development plan. Realizing how popular online shopping is, it's never been so easy to order things you might not even need. Whether you realize it or not lots of companies have supply chains that are not sustainable in the long run. Our project aims to bring information to the consumer allowing them to make more informed decisions by explaining and showing the Environmental, Social, and Governance scores (ESGs) for manufacturers to them before making a purchase along with sharing news article summaries tailored towards these goals, allowing consumers to make a difference.
 
 ## Features
 - Chrome Extension

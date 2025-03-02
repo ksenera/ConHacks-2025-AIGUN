@@ -69,6 +69,10 @@ scraper_page = Blueprint(name='scraper_page', import_name=__name__)
 @scraper_page.route('/api/get_manufacturer/<url>')
 def get_product_manufacturer(url: str):
     response = requests.get(url)
+    
+    if response.status_code != 200:
+        return None
+    
     soup = BeautifulSoup(response.content, 'html.parser')
     
     # get anything on page that refers to manufacturer
